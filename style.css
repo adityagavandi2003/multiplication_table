@@ -1,0 +1,373 @@
+:root {
+  --sky-blue: #87ceeb;
+  --coral-pink: #f08080;
+  --gold: #ffd700;
+  --orange-red: #ff4500;
+  --lemon-chiffon: #fffacd;
+  --sienna: #a0522d;
+  --steel-blue: #4682b4;
+  --blue-violet: #8a2be2;
+  --hot-pink: #ff69b4;
+  --lime-green: #32cd32;
+  --forest-green: #228b22;
+  --light-blue: #add8e6;
+  --tomato: #ff6347;
+  --dark-magenta: #8b008b;
+  --pale-green: #98fb98;
+}
+
+body {
+  font-family: "Comic Neue", cursive;
+  background: linear-gradient(to right, var(--sky-blue), var(--coral-pink));
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative; /* For stars positioning */
+}
+
+h1 {
+  font-family: "Chewy", cursive;
+  color: var(--gold);
+  font-size: 3.5em;
+  text-shadow: 4px 4px 0px var(--orange-red);
+  margin-bottom: 20px;
+  text-align: center;
+  animation: bounce 1s infinite alternate;
+  padding: 0 10px; /* Prevent text overflow on small screens */
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+.container {
+  background-color: var(--lemon-chiffon);
+  padding: 30px 40px;
+  border-radius: 25px;
+  box-shadow: 8px 8px 0px 0px var(--sienna);
+  text-align: center;
+  max-width: 90%;
+  width: 500px;
+  position: relative;
+  z-index: 1;
+  display: flex; /* Use flexbox for inner layout */
+  flex-direction: column; /* Stack elements vertically */
+  gap: 25px; /* Space between sections */
+}
+
+.input-section h3 {
+  color: var(--steel-blue);
+  font-size: 1.8em;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-elements {
+  display: flex;
+  width: 100%;
+  flex-direction: column; /* Stack input and button on small screens */
+  align-items: center;
+  gap: 15px; /* Space between input and button */
+}
+
+#nums {
+  padding: 10px 15px;
+  border: 3px solid var(--blue-violet);
+  border-radius: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#nums:focus {
+  outline: none;
+  border-color: var(--hot-pink);
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+}
+
+#submit-btn {
+  background-color: var(--lime-green);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.6em;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px var(--forest-green);
+  transition: all 0.2s ease;
+}
+
+#submit-btn:hover {
+  background-color: #7cfc00; /* Lawn Green */
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0px 0px var(--forest-green);
+}
+
+#submit-btn:active {
+  transform: translateY(1px);
+  box-shadow: 2px 2px 0px 0px var(--forest-green);
+}
+
+.result-section {
+  background-color: var(--light-blue);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 0px 0px var(--steel-blue);
+  border: 2px dashed var(--tomato);
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left; /* Align list items to left */
+}
+
+.result-section h3 {
+  color: var(--dark-magenta);
+  font-size: 2em;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.7);
+  text-align: center; /* Keep heading centered */
+}
+
+#result {
+  list-style: none;
+  padding: 0;
+}
+
+#result li {
+  background-color: #fff;
+  margin-bottom: 8px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1.3em;
+  color: #555;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.1s ease;
+  word-break: break-word; /* Prevent long lines from overflowing */
+}
+
+#result li:hover {
+  transform: translateX(5px);
+}
+
+.error-message {
+  color: var(--orange-red) !important;
+  font-weight: bold;
+  font-size: 1.4em !important;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Fun decorative elements */
+.decoration-star {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: var(--gold);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  animation: twinkle 2s infinite ease-in-out;
+  z-index: 0;
+  pointer-events: none; /* Make stars not interfere with clicks */
+}
+
+.star-1 {
+  top: 15%;
+  left: 10%;
+  transform: rotate(20deg);
+}
+.star-2 {
+  top: 5%;
+  right: 8%;
+  transform: rotate(-30deg);
+  animation-delay: 0.5s;
+}
+.star-3 {
+  bottom: 10%;
+  left: 20%;
+  transform: rotate(45deg);
+  animation-delay: 1s;
+}
+.star-4 {
+  bottom: 20%;
+  right: 15%;
+  transform: rotate(-10deg);
+  animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(calc(var(--rotation) * 1deg));
+  }
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablets and larger phones (e.g., up to 768px wide) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.8em;
+  }
+
+  .container {
+    padding: 25px 30px;
+  }
+
+  .input-section h3 {
+    font-size: 1.6em;
+  }
+
+  #nums {
+    font-size: 1.3em;
+    width: 80px; /* Slightly smaller input */
+  }
+
+  #submit-btn {
+    font-size: 1.4em;
+    padding: 10px 20px;
+  }
+
+  .result-section h3 {
+    font-size: 1.8em;
+  }
+
+  #result li {
+    font-size: 1.1em;
+    padding: 8px 12px;
+  }
+
+  .decoration-star {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Smaller phones (e.g., up to 480px wide) */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+  }
+
+  .container {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 6px 6px 0px 0px var(--sienna);
+    width: 100%; /* Take full width on very small screens */
+  }
+
+  .input-section h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  .input-elements {
+    flex-direction: column; /* Ensure stacking */
+    gap: 10px;
+  }
+
+  #nums {
+    width: 70%; /* Make input wider but not fixed pixel */
+    max-width: 120px; /* Set a max-width to prevent it from getting too wide */
+    font-size: 1.2em;
+    margin-right: 0; /* Remove margin-right when stacked */
+  }
+
+  #submit-btn {
+    font-size: 1.3em;
+    padding: 10px 20px;
+    width: 80%; /* Make button wider */
+    max-width: 200px;
+  }
+
+  .result-section {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0px 0px var(--steel-blue);
+  }
+
+  .result-section h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+  }
+
+  #result li {
+    font-size: 1em;
+    padding: 6px 10px;
+  }
+
+  .error-message {
+    font-size: 1.2em !important;
+  }
+
+  .decoration-star {
+    width: 20px;
+    height: 20px;
+  }
+  .star-1 {
+    top: 10%;
+    left: 5%;
+  }
+  .star-2 {
+    top: 3%;
+    right: 3%;
+  }
+  .star-3 {
+    bottom: 5%;
+    left: 10%;
+  }
+  .star-4 {
+    bottom: 15%;
+    right: 5%;
+  }
+}

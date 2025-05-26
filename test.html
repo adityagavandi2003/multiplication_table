@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magical Multiplication Machine</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="decoration-star star-1" style="--rotation: 20"></div>
+    <div class="decoration-star star-2" style="--rotation: -30"></div>
+    <div class="decoration-star star-3" style="--rotation: 45"></div>
+    <div class="decoration-star star-4" style="--rotation: -10"></div>
+
+    <h1>✨ Magical Multiplication Machine ✨</h1>
+
+    <div class="container">
+      <div class="input-section">
+        <h3>
+          Hey there, little mathematician! What number do you want to multiply?
+        </h3>
+        <div class="input-elements">
+          <input
+            type="number"
+            name="nums"
+            id="nums"
+            placeholder="Enter a number"
+          />
+          <button type="button" id="submit-btn">Let's Go!</button>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <h3>Your Table:</h3>
+        <ul id="result">
+          <li>Ready to see some magic?</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const numsInput = document.getElementById("nums");
+      const submitBtn = document.getElementById("submit-btn");
+      const resultList = document.getElementById("result");
+
+      submitBtn.addEventListener("click", generateTable);
+      numsInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          generateTable();
+        }
+      });
+
+      function generateTable() {
+        // Clear previous results
+        resultList.innerHTML = "";
+
+        const number = parseInt(numsInput.value);
+
+        if (number <= 0) {
+          const introLi = document.createElement("li");
+          introLi.textContent = `OOPS! There is no table for ${number}:`;
+          introLi.style.fontWeight = "bold";
+          introLi.style.backgroundColor = "var(--pale-green)";
+          resultList.appendChild(introLi);
+        } else if (!isNaN(number)) {
+          // Add a little celebratory message before the table
+          const introLi = document.createElement("li");
+          introLi.textContent = `Woohoo! Here's the table for ${number}:`;
+          introLi.style.fontWeight = "bold";
+          introLi.style.backgroundColor = "var(--pale-green)";
+          resultList.appendChild(introLi);
+
+          for (let i = 1; i <= 10; i++) {
+            const li = document.createElement("li");
+            li.textContent = `${number} x ${i} = ${number * i}`;
+            resultList.appendChild(li);
+          }
+        } else {
+          const li = document.createElement("li");
+          li.textContent = "Oops! Please enter a *real* number, like 5 or 10!";
+          li.classList.add("error-message"); // Add a class for error styling
+          resultList.appendChild(li);
+        }
+        numsInput.focus(); // Keep the input focused for easy re-entry
+      }
+    </script>
+  </body>
+</html>
