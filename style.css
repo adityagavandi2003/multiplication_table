@@ -265,7 +265,7 @@ h1 {
 
   #nums {
     font-size: 1.3em;
-    width: 80px; /* Slightly smaller input */
+    /* width: 80px; Slightly smaller input */
   }
 
   #submit-btn {
@@ -317,8 +317,8 @@ h1 {
   }
 
   #nums {
-    width: 70%; /* Make input wider but not fixed pixel */
-    max-width: 120px; /* Set a max-width to prevent it from getting too wide */
+    /* width: 70%; Make input wider but not fixed pixel */
+    /* max-width: 120px; Set a max-width to prevent it from getting too wide */
     font-size: 1.2em;
     margin-right: 0; /* Remove margin-right when stacked */
   }

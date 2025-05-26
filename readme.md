@@ -13,7 +13,7 @@ This fun and colorful website is designed for kids to easily learn and explore m
 
 ## How to Use
 
-1. Open [`test.html`](test.html) in your web browser.
+1. Open [`click`](https://multiplication-table-theta.vercel.app/) in your web browser.
 2. Enter any positive number in the input box.
 3. Click the **Let's Go!** button or press **Enter**.
 4. See the multiplication table appear below!
